@@ -41,6 +41,7 @@ const FareSummary = ({ isActive }) => {
           <TableHead sx={{ minWidth: "100%" }}>
             <TableRow sx={{ backgroundColor: "#32d095" }}>
               <TableCell align="left">Pax Type(g)</TableCell>
+              <TableCell align="left">Base Fee(BDt)</TableCell>
               <TableCell align="left">Tax(BDT)</TableCell>
               <TableCell align="center">Total(BDT)</TableCell>
               <TableCell align="center">Service Fee(BDT)</TableCell>
@@ -55,6 +56,7 @@ const FareSummary = ({ isActive }) => {
                   backgroundColor: `${data.id % 2 !== 0 ? "#32d0966e" : ""}`,
                 }}
               >
+                <TableCell align="left">{data.type}</TableCell>
                 <TableCell align="left">{data.baseFare}</TableCell>
                 <TableCell align="left">{data.tax}</TableCell>
                 <TableCell align="center">{data.serviceFee}</TableCell>
