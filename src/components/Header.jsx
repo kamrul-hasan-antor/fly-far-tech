@@ -9,19 +9,21 @@ import {
 } from "@mui/material";
 import React from "react";
 
-const Header = () => {
+const Header = ({
+  isReturned,
+  setIsReturned,
+  isViewDetails,
+  setIsViewDetails,
+}) => {
   return (
-    <Container
+    <Box
       sx={{
         display: {
           md: "flex",
         },
-        justifyContent: "center",
         paddingTop: "60px",
         width: {
           xs: "100%",
-          md: "95%",
-          lg: "75%",
         },
         height: "100%",
       }}
@@ -36,7 +38,6 @@ const Header = () => {
           backgroundColor: "white",
           width: {
             xs: "100%",
-            md: "100%",
             lg: "75%",
           },
           justifyContent: "space-between",
@@ -63,13 +64,15 @@ const Header = () => {
         {/* ------ Departure Area and Time -------- */}
         <Grid item xs={9} sm={3}>
           <Typography color={"secondary"} sx={{ fontSize: "1.75rem" }}>
-            DAC
+            {isReturned ? "JFK" : "DAC"}
           </Typography>
           <Typography
             color={"secondary.contrastText"}
             sx={{ fontSize: ".85rem" }}
           >
-            Hazrat Shahjalal Intl Airport
+            {isReturned
+              ? "JF Kennedy Intl Airport"
+              : "Hazrat Shahjalal Intl Airport"}
           </Typography>
           <Typography
             color={"primary"}
@@ -88,6 +91,7 @@ const Header = () => {
         {/* ------ Icon of Flights -------- */}
         <Grid item xs={3} sm={2.5} sx={{ position: "relative" }}>
           <Box
+            onClick={() => setIsReturned(!isReturned)}
             sx={{
               transform: {
                 xs: "rotate(-180deg)",
@@ -102,7 +106,8 @@ const Header = () => {
               sx={{
                 strokeWidth: "0.5px",
                 stroke: "#525371",
-                fill: "none",
+                fill: `${isReturned ? "none" : "#525371"}`,
+
                 fontSize: {
                   xs: "75px",
                   sm: "60px",
@@ -113,6 +118,7 @@ const Header = () => {
             </SvgIcon>
           </Box>
           <Box
+            onClick={() => setIsReturned(!isReturned)}
             sx={{
               transform: {
                 sm: "rotate(-90deg)",
@@ -122,7 +128,7 @@ const Header = () => {
               cursor: "pointer",
               position: "absolute",
               top: {
-                sm: "30px",
+                sm: "35px",
               },
               left: {
                 xs: "3px",
@@ -134,7 +140,7 @@ const Header = () => {
               sx={{
                 strokeWidth: "0.5px",
                 stroke: "#525371",
-                fill: "none",
+                fill: `${isReturned ? "#525371" : "none"}`,
                 fontSize: {
                   xs: "75px",
                   sm: "60px",
@@ -150,13 +156,15 @@ const Header = () => {
 
         <Grid item xs={9} sm={3}>
           <Typography color={"secondary"} sx={{ fontSize: "1.75rem" }}>
-            JFK
+            {isReturned ? "DAC" : "JFK"}
           </Typography>
           <Typography
             color={"secondary.contrastText"}
             sx={{ fontSize: ".85rem" }}
           >
-            JF Kennedy Intl Airport
+            {isReturned
+              ? "Hazrat Shahjalal Intl Airport"
+              : "JF Kennedy Intl Airport"}
           </Typography>
           <Typography
             color={"primary"}
@@ -170,6 +178,49 @@ const Header = () => {
           >
             SUN 6TH JUL 2022
           </Typography>
+        </Grid>
+
+        <Grid
+          container
+          mt={2}
+          item
+          xs={12}
+          sx={{ alignItems: "center", justifyContent: "space-between" }}
+        >
+          <Grid item xs={2} sm={2.5}>
+            <Typography
+              pb={0.5}
+              color={"secondary.contrastText"}
+              sx={{
+                fontSize: ".75rem",
+                borderBottom: "1px solid #525371cb",
+                textAlign: "center",
+              }}
+            >
+              5H 35 Min
+            </Typography>
+            <Typography
+              pt={0.5}
+              color={"secondary.contrastText"}
+              sx={{
+                fontSize: ".75rem",
+                textAlign: "center",
+              }}
+            >
+              2 STOPS
+            </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography color="primary">Refundable</Typography>
+          </Grid>
+          <Grid item xs={2.5}>
+            <Typography color="primary">Class-W</Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography pt={0.5} color={"secondary.contrastText"}>
+              Baggage: 45 KG
+            </Typography>
+          </Grid>{" "}
         </Grid>
       </Grid>
 
@@ -217,9 +268,17 @@ const Header = () => {
             $1850
           </Typography>
           <Button variant="contained">Book Now</Button>
+          <Typography
+            onClick={() => setIsViewDetails(!isViewDetails)}
+            mt={1.5}
+            color="secondary.contrastText"
+            sx={{ textAlign: "center", cursor: "pointer" }}
+          >
+            {isViewDetails ? "Hide" : "Flight"} Details
+          </Typography>
         </Box>
       </Box>
-    </Container>
+    </Box>
   );
 };
 
