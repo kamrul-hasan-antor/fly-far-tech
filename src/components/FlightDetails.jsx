@@ -88,7 +88,7 @@ const FlightDetails = ({ isReturned, isActive }) => {
             Depart
           </Typography>
           <Typography color={"secondary"} sx={{ fontSize: "1.50rem" }}>
-            DBX
+            DXB
           </Typography>
           <Typography
             color={"secondary.contrastText"}
