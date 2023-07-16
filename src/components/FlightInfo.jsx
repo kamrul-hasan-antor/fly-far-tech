@@ -1,14 +1,21 @@
 import { Box, Button, Container, Grid } from "@mui/material";
 import React, { useState } from "react";
+import FlightDetails from "./FlightDetails";
+import FareSummary from "./FareSummary";
+import FarePolicy from "./FarePolicy";
+import Baggage from "./Baggage";
 
-const FlightDetails = ({ isViewDetails, isReturned }) => {
+const FlightInfo = ({ isViewDetails, isReturned }) => {
   const [isActive, setIsActive] = useState(1);
-  console.log(isActive);
+
+  const handleActive = (id) => {
+    setIsActive(id);
+  };
   return (
     <Box
       sx={{
         display: {
-          xs: `${isViewDetails ? "flex" : "none"}`,
+          xs: `${isViewDetails ? "block" : "none"}`,
         },
         width: {
           xs: "100%",
@@ -26,12 +33,14 @@ const FlightDetails = ({ isViewDetails, isReturned }) => {
           width: {
             xs: "100%",
           },
+          borderBottomRightRadius: "0",
+          borderBottomLeftRadius: "0",
         }}
       >
         <Grid container>
           <Grid item xs={6} sm={3}>
             <Button
-              onClick={() => setIsActive(1)}
+              onClick={() => handleActive(1)}
               variant={`${isActive === 1 ? "contained" : ""}`}
             >
               flight details
@@ -39,15 +48,15 @@ const FlightDetails = ({ isViewDetails, isReturned }) => {
           </Grid>
           <Grid item xs={6} sm={3}>
             <Button
-              onClick={() => setIsActive(2)}
+              onClick={() => handleActive(2)}
               variant={`${isActive === 2 ? "contained" : ""}`}
             >
-              Fare Summery
+              Fare Summary
             </Button>
           </Grid>
           <Grid item xs={6} sm={3}>
             <Button
-              onClick={() => setIsActive(3)}
+              onClick={() => handleActive(3)}
               variant={`${isActive === 3 ? "contained" : ""}`}
             >
               Fare Policy
@@ -55,7 +64,7 @@ const FlightDetails = ({ isViewDetails, isReturned }) => {
           </Grid>
           <Grid item xs={6} sm={3}>
             <Button
-              onClick={() => setIsActive(4)}
+              onClick={() => handleActive(4)}
               variant={`${isActive === 4 ? "contained" : ""}`}
             >
               Baggage
@@ -63,8 +72,15 @@ const FlightDetails = ({ isViewDetails, isReturned }) => {
           </Grid>
         </Grid>
       </Box>
+
+      <Box sx={{ backgroundColor: "white" }}>
+        <FlightDetails isActive={isActive} isReturned={isReturned} />
+        <FareSummary isActive={isActive} />
+        <FarePolicy isActive={isActive} />
+        <Baggage isActive={isActive} />
+      </Box>
     </Box>
   );
 };
 
-export default FlightDetails;
+export default FlightInfo;

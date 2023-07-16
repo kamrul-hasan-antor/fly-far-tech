@@ -21,7 +21,7 @@ const Header = ({
         display: {
           md: "flex",
         },
-        paddingTop: "60px",
+
         width: {
           xs: "100%",
         },
@@ -55,7 +55,9 @@ const Header = ({
             alt="Biman Bangladesh Airlines Logo"
             src="https://tbbd-flight.s3.ap-southeast-1.amazonaws.com/airlines-logo/BG.png"
           />
-          <Typography mt={1}>Biman Bangladesh Airlines</Typography>
+          <Typography mt={1} color={"secondary"} sx={{ fontSize: "1.1rem" }}>
+            Biman Bangladesh Airlines
+          </Typography>
           <Typography color={"primary"} sx={{ fontSize: ".75rem" }}>
             BG 178 | w & BG 671 | E
           </Typography>
