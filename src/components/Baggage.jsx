@@ -38,7 +38,7 @@ const Baggage = ({ isActive }) => {
             <TableRow sx={{ backgroundColor: "#32d095" }}>
               <TableCell align="left">Baggage(g)</TableCell>
               <TableCell align="left">Check-In</TableCell>
-              <TableCell align="right">Cabin</TableCell>
+              <TableCell align="center">Cabin</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -51,7 +51,7 @@ const Baggage = ({ isActive }) => {
               >
                 <TableCell align="left">{data.baggage}</TableCell>
                 <TableCell align="left">{data.checkIn}</TableCell>
-                <TableCell align="right">{data.cabin}</TableCell>
+                <TableCell align="center">{data.cabin}</TableCell>
               </TableRow>
             ))}
           </TableBody>
